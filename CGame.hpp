@@ -1,11 +1,11 @@
 #ifndef _CGAME_HPP_
-#define _CGAME_HPP
+#define _CGAME_HPP_
 
 class CGame
 {
-private:
-    /* data */
 public:
+    /* data */
+private:
     /* data */
 };
 

@@ -1,3 +1,5 @@
+#include "CReferee.hpp"
+#include "CGame.hpp"
 #include <iostream>
 #include <string>
 using namespace std;

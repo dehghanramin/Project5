@@ -3,9 +3,9 @@
 
 class CReferee
 {
-private:
-    /* data */
 public:
+    /* data */
+private:
     /* data*/
 };
 
