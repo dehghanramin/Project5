@@ -2,8 +2,10 @@
 #include "CGame.hpp"
 #include <iostream>
 #include <string>
+#include <time.h>
 using namespace std;
 
+srand((unsigned)time(NULL));
 
  
 
