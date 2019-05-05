@@ -19,6 +19,8 @@ private:
     RefereeGrade grade;
     std::string gradeToString() const;
     RefereeGrade stringToGrade(std::string const&) const;
+    void setGrade(std::string const&);
+    void setGrade(RefereeGrade const&);
 };
 
 #endif
