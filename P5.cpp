@@ -5,7 +5,7 @@
 #include <time.h>
 using namespace std;
 
-// srand((unsigned)time(NULL));
+// srand((unsigned)time(NULL))
 
  
 

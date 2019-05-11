@@ -5,13 +5,15 @@
 CReferee::CReferee() :
 id("R000"),
 firstname("None"),
-lastname("None") {}
+lastname("None"),
+game_id("None") {}
 
-CReferee::CReferee(std::string const& id_, std::string const& first_, std::string const& last_, RefereeGrade const& grade_) :
+CReferee::CReferee(std::string const& id_, std::string const& first_, std::string const& last_, RefereeGrade const& grade_, std::string const& game_id_) :
 id(id_),
 firstname(first_),
 lastname(last_),
-grade(grade_) {}
+grade(grade_),
+game_id(game_id_) {}
 
 CReferee::~CReferee() {}
 
@@ -19,22 +21,10 @@ std::string CReferee::gradeToString() const
 {
     switch (grade)
     {
-    case UNKNOWN:
-        return "UNKNOWN";
-        break;
-    case CLUB:
-        return "CLUB";
-        break;
-    case STATE:
-        return "STATE";
-        break;
-    case NATIONAL:
-        return "NATIONAL";
-        break;
-    case FIFA:
-        return "FIFA";
-        break;
-    default:
+        #define DEFINE_GRADE(grade, int) case grade: return #grade;
+        #include "referee_enum.hpp"
+        #undef DEFINE_GRADE
+        default:
         std::cerr << "Unknown grade! Returning \"UNKNOWN\"" << std::endl;
         return "UNKNOWN";
         break;
@@ -83,7 +73,8 @@ void CReferee::setGrade(RefereeGrade const& input)
 std::ostream& operator<<(std::ostream& ost, CReferee const& obj)
 {
     ost << std::endl << obj.id << std::setw(12) << obj.firstname
-        << std::setw(12) << obj.lastname << std::setw(12) << obj.gradeToString() << std::endl;
+        << std::setw(12) << obj.lastname << std::setw(12) << obj.gradeToString()
+        << std::setw(12) << obj.game_id << std::endl;
     return ost;
 }
 
@@ -91,7 +82,8 @@ std::istream& operator>>(std::istream& ins, CReferee& obj)
 {
     std::string temp_grade;
     ins >> obj.id >> obj.firstname
-        >> obj.lastname >> temp_grade;
+        >> obj.lastname >> temp_grade
+        >> obj.game_id;
     obj.setGrade(temp_grade);
     return ins;
 }
