@@ -31,11 +31,8 @@
 *.out
 *.app
 
-# Dependencies
-*.depend
-
 # Visual Studio Code
 *.vscode
 
-# Notes
-*.txt
+# Dependencies
+*.depend

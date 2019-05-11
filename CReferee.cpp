@@ -41,20 +41,57 @@ std::string CReferee::gradeToString() const
     }
 }
 
-RefereeGrade CReferee::stringToGrade(std::string const& i) const
+RefereeGrade CReferee::stringToGrade(std::string const& input) const
 {
-    
+    if (input == "UNKNOWN")
+    {
+        return UNKNOWN;
+    }
+    else if (input == "CLUB")
+    {
+        return CLUB;
+    }
+    else if (input == "STATE")
+    {
+        return STATE;
+    }
+    else if (input == "NATIONAL")
+    {
+        return NATIONAL;
+    }
+    else if (input == "FIFA")
+    {
+        return FIFA;
+    }
+    else
+    {
+        std::cerr << "Incorrect input! Returning \"UNKNOWN\"" << std::endl;
+        return UNKNOWN;
+    }
+}
+
+void CReferee::setGrade(std::string const& input)
+{
+    grade = stringToGrade(input);
+}
+
+void CReferee::setGrade(RefereeGrade const& input)
+{
+    grade = input;
 }
 
 std::ostream& operator<<(std::ostream& ost, CReferee const& obj)
 {
-    ost << std::setw(12) << obj.id << obj.firstname
-        << obj.lastname << obj.gradeToString() << std::endl;
+    ost << std::endl << obj.id << std::setw(12) << obj.firstname
+        << std::setw(12) << obj.lastname << std::setw(12) << obj.gradeToString() << std::endl;
     return ost;
 }
 
 std::istream& operator>>(std::istream& ins, CReferee& obj)
 {
+    std::string temp_grade;
     ins >> obj.id >> obj.firstname
-        >> obj.lastname >> 
+        >> obj.lastname >> temp_grade;
+    obj.setGrade(temp_grade);
+    return ins;
 }
