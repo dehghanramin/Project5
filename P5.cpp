@@ -3,27 +3,8 @@ using namespace std;
 
 // srand((unsigned)time(NULL))
 
- 
-
-
-
-
- 
-
 CReferee referees[15];
 CGame games[5];
-
- 
-
-// // Function to read referee information from the file Referees.dat
-// void readRefereeInfo();
-
-
-
-// // Function to write referee information back to the file Referees.dat
-// void writeRefereeInfo();
-
-
 
 // int main(void)
 // {
@@ -70,30 +51,6 @@ CGame games[5];
 // }
 
  
-
-// int menu()
-// {
-//        int option;
-//        cout << "             REFEREE ASSIGNING SYSTEM \n\n"
-//             << " 1.  List All Referees. \n"
-//             << " 2.  List All Referees Of A Specific Grade. \n"
-//             << " 3.  List All Referees With Grade Higher A Specific Grade. \n"
-//             << " 4.  List All Referees With Grade Lower A Specific Grade. \n"
-//             << " 5.  List Referee Information With ID. \n"
-//             << " 6.  List Referee Information With Names. \n"
-//             << " 7.  Add New Referee. \n"
-//             << " 8.  Remove A Referee. \n"
-//             << " 9.  Update Referee Grade. \n"
-//             << "10.  Quit. \n" << endl;
-//        cout << "Please select your option: ";
-//        cin >> option;
-//        while (option < 1 || option > 10)
-//        {
-//              cout << "Invalid option!!! Please select valid option: ";
-//              cin >> option;
-//        }
-//        return option;
-// }
 
 int main(int argc, char const *argv[])
 {
