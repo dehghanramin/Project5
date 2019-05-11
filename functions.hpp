@@ -1,0 +1,17 @@
+int menu();
+void listAllReferees();
+void listAllGames();
+void listAllAssignedGames();
+void listAllUnassignedGames();
+void listtRefereeInfoWithId();
+void listtRefereeInfoWithLastName();
+void addNewReferee();
+void assignGame();
+void addGame();
+void removeGame();
+void calculateGamePayment(short&, short&, short&);
+void calculateRefereePayment();
+void Quit();
+void readInfo();
+void writeInfo();
+short randomIndex();

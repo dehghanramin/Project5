@@ -1,30 +1,17 @@
-#include "CReferee.hpp"
-#include "CGame.hpp"
-#include <iostream>
-#include <string>
-#include <time.h>
+#include "includes.hpp"
 using namespace std;
 
 // srand((unsigned)time(NULL))
 
  
 
-// int menu();
-// void listAllReferees();
-// void listRefereesOfSpecificGrade();
-// void listtRefereesWithGradeHigherThanSpecificGrade();
-// void listtRefereesWithGradeLowerThanSpecificGrade();
-// void listtRefereeInfoWithId();
-// void listtRefereeInfoWithNames();
-// void addNewReferee();
-// void removeReferee();
-// void updateRefereeGrade();
-// void Quit();
+
 
 
  
 
-// // CReferee referees[10];
+CReferee referees[15];
+CGame games[5];
 
  
 
