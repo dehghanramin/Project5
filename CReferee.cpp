@@ -1,5 +1,6 @@
 #include "CReferee.hpp"
 #include <iomanip>
+#include <fstream>
 #include <iostream>
 
 CReferee::CReferee() :
@@ -86,4 +87,53 @@ std::istream& operator>>(std::istream& ins, CReferee& obj)
         >> obj.game_id;
     obj.setGrade(temp_grade);
     return ins;
+}
+
+bool operator>(CReferee const& a, RefereeGrade const& b)
+{
+    return a.grade > b;
+}
+
+bool operator<(CReferee const& a, RefereeGrade const& b)
+{
+    return a.grade < b;
+}
+
+bool CReferee::isEmpty() const
+{
+    return id == "0000";
+}
+
+bool operator==(CReferee const& a, std::string const& id)
+{
+    return a.id == id;
+}
+
+bool operator==(CReferee const& a, RefereeGrade const& b)
+{
+    return a.grade == b;
+}
+
+std::ofstream& operator<<(std::ofstream& ost, CReferee const& obj)
+{
+    ost << obj.id << std::setw(12) << obj.firstname
+        << std::setw(12) << obj.lastname << std::setw(12) << obj.gradeToString()
+        << std::setw(12) << obj.game_id << std::endl;
+    return ost;
+}
+
+std::ifstream& operator>>(std::ifstream& ins, CReferee& obj)
+{
+    ins >> obj.id;
+    ins >> obj.firstname;
+    ins >> obj.lastname;
+    std::string grade;
+    ins >> grade;
+    obj.grade = obj.stringToGrade(grade);
+    return ins;
+}
+
+bool CReferee::isSameName(std::string const& input) const
+{
+    return lastname == input;
 }

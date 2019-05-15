@@ -17,6 +17,14 @@ public:
     ~CReferee();
     friend std::ostream& operator<<(std::ostream&, CReferee const&);
     friend std::istream& operator>>(std::istream&, CReferee&);
+    friend std::ofstream& operator<<(std::ofstream&, CReferee const&);
+    friend std::ifstream& operator>>(std::ifstream&, CReferee&);
+    friend bool operator>(CReferee const&, RefereeGrade const&);
+    friend bool operator<(CReferee const&, RefereeGrade const&);
+    friend bool operator==(CReferee const&, std::string const&);
+    friend bool operator==(CReferee const&, RefereeGrade const&);
+    bool isSameName(std::string const&) const;
+    bool isEmpty() const;
 private:
     std::string id;
     std::string firstname;
