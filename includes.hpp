@@ -8,6 +8,7 @@
 #include "CSIPrinter.hpp"
 #include "CSNPrinter.hpp"
 #include "CReader.hpp"
+#include "CFWriter.hpp"
 #include <iostream>
 #include <string>
 #include <time.h>

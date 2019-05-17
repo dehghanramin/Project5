@@ -16,6 +16,7 @@ public:
     CGame(std::string const&, GameDuration const&, float const&, std::string const&, std::string const&, std::string const&);
     friend std::ostream& operator<<(std::ostream&, CGame const&);
     friend std::istream& operator>>(std::istream&, CGame&);
+    bool isEmpty() const;
 private:
     std::string id;
     GameDuration duration;

@@ -100,7 +100,7 @@ bool operator<(CReferee const& a, RefereeGrade const& b)
 
 bool CReferee::isEmpty() const
 {
-    return id == "0000";
+    return id == "R000";
 }
 
 bool operator==(CReferee const& a, std::string const& id)

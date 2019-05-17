@@ -113,3 +113,8 @@ std::istream& operator>>(std::istream& ins, CGame& obj)
 
     return ins;
 }
+
+bool CGame::isEmpty() const
+{
+    return id == "G000";
+}

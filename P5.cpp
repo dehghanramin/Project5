@@ -117,7 +117,8 @@ void listAllReferees()
 
 void listAllGames()
 {
-
+        CFWriter<CGame> writer(games, &games[3]);
+        writer.print();
 }
 
 void listAllAssignedGames()
