@@ -6,10 +6,11 @@ class CReader
 {
 public:
     CReader();
-    CReader(CReferee*);
+    CReader(CReferee*, CReferee*);
     void read();
 private:
     CReferee* start_;
+    CReferee* end_;
     void readFile(std::ifstream&);
 };
 

@@ -3,9 +3,9 @@
 #include <fstream>
 #include <iostream>
 
-CReader::CReader() : start_(NULL) {}
+CReader::CReader() : start_(NULL), end_(NULL) {}
 
-CReader::CReader(CReferee* start) : start_(start) {}
+CReader::CReader(CReferee* start, CReferee* end) : start_(start), end_(end) {}
 
 void CReader::read()
 {
@@ -18,9 +18,8 @@ void CReader::read()
 
 void CReader::readFile(std::ifstream& ins)
 {
-    const CReferee* END = &start_[((sizeof(start_)/sizeof(*start_)) - 1)];
     CReferee* pItr = start_;
-    while((ins >> *pItr) && (pItr <= END))
+    while((pItr <= end_) && (ins >> *pItr))
     {
         ++pItr;
     }

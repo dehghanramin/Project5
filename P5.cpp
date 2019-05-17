@@ -26,11 +26,11 @@ short randomIndex();
 
 int main(void)
 {
-       short choice;
-       srand((unsigned)time(NULL));
+        readInfo();
+        short choice;
+        srand((unsigned)time(NULL));
         do
         {
-                system("clear");
                 choice = menu();
                 switch (choice)
                 {
@@ -76,6 +76,7 @@ int main(void)
                 default:
                         cout << "That was an invalid choice, please try again! \n";
                 }
+                // system("clear");
        } while ((choice > 0) && (choice < 10));
        return 0;
 }
@@ -176,7 +177,7 @@ void Quit()
 
 void readInfo()
 {
-        CReader reader(referees);
+        CReader reader(referees, &referees[14]);
         try
         {
                 reader.read();
@@ -185,8 +186,6 @@ void readInfo()
         {
                 std::cerr << e << std::endl;
         }
-        
-        
 }
 
 void writeInfo()
@@ -196,5 +195,5 @@ void writeInfo()
 
 short randomIndex()
 {
-    return static_cast<short>(rand() % 15);
+        return static_cast<short>(rand() % 15);
 }

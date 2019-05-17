@@ -56,7 +56,6 @@ RefereeGrade CReferee::stringToGrade(std::string const& input) const
     }
     else
     {
-        std::cerr << "Incorrect input! Returning \"UNKNOWN\"" << std::endl;
         return UNKNOWN;
     }
 }
@@ -130,6 +129,7 @@ std::ifstream& operator>>(std::ifstream& ins, CReferee& obj)
     std::string grade;
     ins >> grade;
     obj.grade = obj.stringToGrade(grade);
+    ins >> obj.game_id;
     return ins;
 }
 
