@@ -77,48 +77,48 @@ int main(void)
                         cout << "That was an invalid choice, please try again! \n";
                 }
                 // system("clear");
-       } while ((choice > 0) && (choice < 10));
-       return 0;
+        } while ((choice > 0) && (choice < 10));
+        return 0;
 }
 
 
 int menu()
 {
-    int option;
-    std::cout << "             REFEREE ASSIGNING SYSTEM \n\n"
-        << " 1.  List All Referees. \n"
-        << " 2.  List All Games. \n"
-        << " 3.  List All Assigned Games. \n"
-        << " 4.  List All Unassigned Games. \n"
-        << " 5.  List Referee Information With ID. \n"
-        << " 6.  List Referee Information With Last Names. \n"
-        << " 7.  Add New Referee. \n"
-        << " 8.  Assign Game. \n"
-        << " 9.  Add Game. \n"
-        << " 10. Remove Game. \n"
-        << " 11. Calculate Game Payment. \n"
-        << " 12. Calculate Referee Payment. \n"
-        << " 13. Quit. \n" << std::endl;
-    std::cout << "Please select your option: ";
-    std::cin >> option;
-    while (option < 1 || option > 13)
-    {
-        std::cout << "Invalid option!!! Please select valid option: ";
+        int option;
+        std::cout << "             REFEREE ASSIGNING SYSTEM \n\n"
+            << " 1.  List All Referees. \n"
+            << " 2.  List All Games. \n"
+            << " 3.  List All Assigned Games. \n"
+            << " 4.  List All Unassigned Games. \n"
+            << " 5.  List Referee Information With ID. \n"
+            << " 6.  List Referee Information With Last Names. \n"
+            << " 7.  Add New Referee. \n"
+            << " 8.  Assign Game. \n"
+            << " 9.  Add Game. \n"
+            << " 10. Remove Game. \n"
+            << " 11. Calculate Game Payment. \n"
+            << " 12. Calculate Referee Payment. \n"
+            << " 13. Quit. \n" << std::endl;
+        std::cout << "Please select your option: ";
         std::cin >> option;
-    }
-    return option;
+        while (option < 1 || option > 13)
+        {
+            std::cout << "Invalid option!!! Please select valid option: ";
+            std::cin >> option;
+        }
+        return option;
 }
 
 void listAllReferees()
 {
-    CAPrinter printer(referees, &referees[14]);
-    printer.print();
+        CWriter<CReferee> printer(referees, &referees[14]);
+        printer.print();
 }
 
 void listAllGames()
 {
-        CFWriter<CGame> writer(games, &games[3]);
-        writer.print();
+        CWriter<CGame> printer(games, &games[14]);
+        printer.print();
 }
 
 void listAllAssignedGames()
@@ -173,7 +173,8 @@ void calculateRefereePayment()
 
 void Quit()
 {
-
+        writeInfo();
+        cout << "Bye Bye!" << endl;
 }
 
 void readInfo()
@@ -183,15 +184,25 @@ void readInfo()
         {
                 reader.read();
         }
-        catch(std::string const& e)
+        catch(string const& e)
         {
-                std::cerr << e << std::endl;
+                cerr << e << std::endl;
         }
 }
 
-void writeInfo()
+void   writeInfo()
 {
-    
+        CFWriter<CGame> game_writer(games, &games[4]);
+        CFWriter<CReferee> referee_writer(referees, &referees[14]);
+        try
+        {        
+                game_writer.print();
+                referee_writer.print();
+        }
+        catch(string const& e)
+        {
+                cerr << e << endl;
+        }
 }
 
 short randomIndex()
