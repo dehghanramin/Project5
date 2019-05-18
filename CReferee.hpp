@@ -25,6 +25,7 @@ public:
     friend bool operator==(CReferee const&, RefereeGrade const&);
     bool isSameName(std::string const&) const;
     bool isEmpty() const;
+    void assign(std::string const&);
 private:
     std::string id;
     std::string firstname;

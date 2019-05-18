@@ -4,7 +4,8 @@
 #include "CFWriter.hpp"
 #include "CGWriter.hpp"
 #include "CRWriter.hpp"
+#include "CRManager.hpp"
+#include "CGManager.hpp"
 #include <iostream>
 #include <string>
-#include <time.h>
 #include <stdlib.h>

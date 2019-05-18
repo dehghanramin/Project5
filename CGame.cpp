@@ -114,6 +114,11 @@ std::istream& operator>>(std::istream& ins, CGame& obj)
     return ins;
 }
 
+bool operator==(CGame const& obj, std::string const& i)
+{
+    return obj.id == i;
+}
+
 bool CGame::isEmpty() const
 {
     return id == "G000";

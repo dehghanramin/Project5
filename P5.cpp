@@ -28,13 +28,13 @@ void writeInfo();
 short randomIndex();
 std::string getLastName();
 std::string getID();
-
+std::string getGameID();
+bool checkgameID(string const&);
 
 int main(void)
 {
         readInfo();
         short choice;
-        srand((unsigned)time(NULL));
         do
         {
                 choice = menu();
@@ -154,12 +154,24 @@ void listtRefereeInfoWithLastName()
 
 void addNewReferee()
 {
-
+        CRManager manager(START_REF, END_REF);
+        manager.addReferee();
 }
 
 void assignGame()
 {
-
+        try
+        {
+                CGManager game_manager(START_GAME, END_GAME);
+                CRManager ref_manager(START_REF, END_REF);
+                string game_id(getGameID());
+                if (game_manager.in(game_id)) { throw "Invalid ID!"; }
+                ref_manager.assignGame(game_id);
+        }
+        catch(string const& e)
+        {
+                std::cerr << e << endl;
+        }
 }
 
 void addGame()
@@ -230,8 +242,16 @@ std::string getLastName()
 
 std::string getID()
 {
-        std::string input;
+        string input;
         cout << "Enter ID: " << endl;
+        cin >> input;
+        return input;
+}
+
+std::string getGameID()
+{
+        string input;
+        cout << "Enter Game ID:" << endl;
         cin >> input;
         return input;
 }

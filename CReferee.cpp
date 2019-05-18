@@ -137,3 +137,8 @@ bool CReferee::isSameName(std::string const& input) const
 {
     return lastname == input;
 }
+
+void CReferee::assign(std::string const& id)
+{
+    game_id = id;
+}
