@@ -15,10 +15,10 @@ private:
 };
 
 template <typename T>
-CRWriter<T>::CRWriter() : CWriter() {}
+CRWriter<T>::CRWriter() : CWriter<T>() {}
 
 template <typename T>
-CRWriter<T>::CRWriter(T* start, T* end, std::string data) : CWriter(start, end), data_(data) {}
+CRWriter<T>::CRWriter(T* start, T* end, std::string data) : CWriter<T>(start, end), data_(data) {}
 
 template <typename T>
 void CRWriter<T>::printWID() const

@@ -1,3 +1,5 @@
+#ifndef _CFWRITER_HPP_
+#define _CFWRITER_HPP_
 #include "CWriter.hpp"
 #include <fstream>
 
@@ -28,3 +30,5 @@ void CFWriter<T>::print() const
     }
     outStream.close();
 }
+
+#endif
