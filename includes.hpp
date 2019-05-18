@@ -1,14 +1,9 @@
 #include "CReferee.hpp"
 #include "CGame.hpp"
-#include "CAFPrinter.hpp"
-#include "CAPrinter.hpp"
-#include "CHGPrinter.hpp"
-#include "CLGPrinter.hpp"
-#include "CSGPrinter.hpp"
-#include "CSIPrinter.hpp"
-#include "CSNPrinter.hpp"
 #include "CReader.hpp"
 #include "CFWriter.hpp"
+#include "CGWriter.hpp"
+#include "CRWriter.hpp"
 #include <iostream>
 #include <string>
 #include <time.h>

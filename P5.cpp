@@ -1,4 +1,8 @@
 #include "includes.hpp"
+#define END_GAME &games[5]
+#define END_REF &referees[14]
+#define START_GAME games
+#define START_REF referees
 using namespace std;
 
 CReferee referees[15];
@@ -22,6 +26,8 @@ void Quit();
 void readInfo();
 void writeInfo();
 short randomIndex();
+std::string getLastName();
+std::string getID();
 
 
 int main(void)
@@ -77,7 +83,8 @@ int main(void)
                         cout << "That was an invalid choice, please try again! \n";
                 }
                 // system("clear");
-        } while ((choice > 0) && (choice < 10));
+        } while ((choice > 0) && (choice < 13));
+        cout << "Bye Bye!" << endl;
         return 0;
 }
 
@@ -111,34 +118,38 @@ int menu()
 
 void listAllReferees()
 {
-        CWriter<CReferee> printer(referees, &referees[14]);
+        CWriter<CReferee> printer(START_REF, END_REF);
         printer.print();
 }
 
 void listAllGames()
 {
-        CWriter<CGame> printer(games, &games[14]);
+        CWriter<CGame> printer(START_GAME, END_GAME);
         printer.print();
 }
 
 void listAllAssignedGames()
 {
-    
+        CGWriter<CGame> printer(START_GAME, END_GAME);
+        printer.printAssigned();
 }
 
 void listAllUnassignedGames()
 {
-    
+        CGWriter<CGame> printer(START_GAME, END_GAME);
+        printer.printUnassigned();
 }
 
 void listtRefereeInfoWithId()
 {
-
+        CRWriter<CReferee> printer(START_REF, END_REF, getLastName());
+        printer.printWID();
 }
 
 void listtRefereeInfoWithLastName()
 {
-
+        CRWriter<CReferee> printer(START_REF, END_REF, getLastName());
+        printer.printWLN();
 }
 
 void addNewReferee()
@@ -174,7 +185,6 @@ void calculateRefereePayment()
 void Quit()
 {
         writeInfo();
-        cout << "Bye Bye!" << endl;
 }
 
 void readInfo()
@@ -208,4 +218,20 @@ void   writeInfo()
 short randomIndex()
 {
         return static_cast<short>(rand() % 15);
+}
+
+std::string getLastName()
+{
+        std::string input;
+        cout << "Enter Last Name: " << endl;
+        cin >> input;
+        return input;
+}
+
+std::string getID()
+{
+        std::string input;
+        cout << "Enter ID: " << endl;
+        cin >> input;
+        return input;
 }
