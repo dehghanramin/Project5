@@ -118,3 +118,8 @@ bool CGame::isEmpty() const
 {
     return id == "G000";
 }
+
+bool CGame::isAssigned() const
+{
+    return !(center == "R000" && ar1 == "R000" && ar2 == "R000");
+}

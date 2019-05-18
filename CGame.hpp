@@ -17,6 +17,7 @@ public:
     friend std::ostream& operator<<(std::ostream&, CGame const&);
     friend std::istream& operator>>(std::istream&, CGame&);
     bool isEmpty() const;
+    bool isAssigned() const;
 private:
     std::string id;
     GameDuration duration;

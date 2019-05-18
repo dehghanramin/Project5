@@ -1,5 +1,7 @@
 #include <cstddef>
 #include <iostream>
+#ifndef _CWRITER_HPP_
+#define _CWRITER_HPP_
 
 template <typename T>
 class CWriter
@@ -41,3 +43,5 @@ T* CWriter<T>::getEnd() const
 {
     return end_;
 }
+
+#endif

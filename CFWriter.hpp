@@ -2,7 +2,7 @@
 #include <fstream>
 
 template <typename T>
-class CFWriter : CWriter<T>
+class CFWriter : public CWriter<T>
 {
 public:
     CFWriter();

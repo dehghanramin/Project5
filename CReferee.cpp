@@ -103,9 +103,9 @@ bool CReferee::isEmpty() const
     return id == "R000";
 }
 
-bool operator==(CReferee const& a, std::string const& id)
+bool operator==(CReferee const& a, std::string const& data)
 {
-    return a.id == id;
+    return a.id == data || a.lastname == data;
 }
 
 bool operator==(CReferee const& a, RefereeGrade const& b)
