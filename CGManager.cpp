@@ -1,4 +1,5 @@
 #include "CGManager.hpp"
+#include <iostream>
 
 CGManager::CGManager() : CManager<CGame>(NULL, NULL) {}
 
@@ -11,4 +12,18 @@ bool CGManager::in(std::string const& i) const
         if (*pIterator == i) { return true; }
     }
     return false;
+}
+
+void CGManager::addGame()
+{
+    CGame* game = find("G000");
+    if (!game) { throw "No space available!"; }
+    std::cin >> *game;
+}
+
+void CGManager::removeGame(std::string const& target)
+{
+    CGame* game = find(target);
+    if (!game) { throw "No such game!"; }
+    game->reset();
 }

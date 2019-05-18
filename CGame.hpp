@@ -6,7 +6,7 @@ enum GameDuration
 {
     #define DEFINE_DURATION(duration, int) duration,
     #include "game_enum.hpp"
-    #undef DEFIEN_DURATION
+    #undef DEFINE_DURATION
 };
 
 class CGame
@@ -19,6 +19,8 @@ public:
     friend bool operator==(CGame const&, std::string const&);
     bool isEmpty() const;
     bool isAssigned() const;
+    void reset();
+    unsigned int getValue() const;
 private:
     std::string id;
     GameDuration duration;
@@ -31,6 +33,7 @@ private:
     std::string durationToString() const;
     void setDuration(std::string const&);
     void setPayrate(std::string const&);
+    int durationToInt() const;
 };
 
 #endif

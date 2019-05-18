@@ -26,10 +26,12 @@ void Quit();
 void readInfo();
 void writeInfo();
 short randomIndex();
-std::string getLastName();
-std::string getID();
-std::string getGameID();
+string getLastName();
+string getID();
+string getGameID();
 bool checkgameID(string const&);
+CGame* indexToPointer(int const&);
+int findIndex(string const&);
 
 int main(void)
 {
@@ -92,7 +94,7 @@ int main(void)
 int menu()
 {
         int option;
-        std::cout << "             REFEREE ASSIGNING SYSTEM \n\n"
+        cout << "             REFEREE ASSIGNING SYSTEM \n\n"
             << " 1.  List All Referees. \n"
             << " 2.  List All Games. \n"
             << " 3.  List All Assigned Games. \n"
@@ -105,13 +107,13 @@ int menu()
             << " 10. Remove Game. \n"
             << " 11. Calculate Game Payment. \n"
             << " 12. Calculate Referee Payment. \n"
-            << " 13. Quit. \n" << std::endl;
-        std::cout << "Please select your option: ";
-        std::cin >> option;
+            << " 13. Quit. \n" << endl;
+        cout << "Please select your option: ";
+        cin >> option;
         while (option < 1 || option > 13)
         {
-            std::cout << "Invalid option!!! Please select valid option: ";
-            std::cin >> option;
+            cout << "Invalid option!!! Please select valid option: ";
+            cin >> option;
         }
         return option;
 }
@@ -170,28 +172,47 @@ void assignGame()
         }
         catch(string const& e)
         {
-                std::cerr << e << endl;
+                cerr << e << endl;
         }
 }
 
 void addGame()
 {
-
+        CGManager manager(START_GAME, END_GAME);
+        try
+        {
+                manager.addGame();
+        }
+        catch(string const& e)
+        {
+                std::cerr << e << endl;
+        }
 }
 
 void removeGame()
 {
-
+        CGManager manager(START_GAME, END_GAME);
+        try
+        {
+                manager.removeGame(getGameID());
+        }
+        catch(string const& e)
+        {
+                std::cerr << e << endl;
+        }
+        
 }
 
 void calculateGamePayment()
 {
-
+        CGCalculator calculator(indexToPointer(findIndex(getGameID())));
+        cout << calculator.calculateTotal() << endl;
 }
 
 void calculateRefereePayment()
 {
-
+        CGCalculator calculator(indexToPointer(findIndex(getGameID())));
+        cout << calculator.calculateRef();
 }
 
 void Quit()
@@ -208,7 +229,7 @@ void readInfo()
         }
         catch(string const& e)
         {
-                cerr << e << std::endl;
+                cerr << e << endl;
         }
 }
 
@@ -232,15 +253,15 @@ short randomIndex()
         return static_cast<short>(rand() % 15);
 }
 
-std::string getLastName()
+string getLastName()
 {
-        std::string input;
+        string input;
         cout << "Enter Last Name: " << endl;
         cin >> input;
         return input;
 }
 
-std::string getID()
+string getID()
 {
         string input;
         cout << "Enter ID: " << endl;
@@ -248,10 +269,23 @@ std::string getID()
         return input;
 }
 
-std::string getGameID()
+string getGameID()
 {
         string input;
         cout << "Enter Game ID:" << endl;
         cin >> input;
         return input;
+}
+
+CGame* indexToPointer(int const& i)
+{
+        return &games[i];
+}
+
+int findIndex(string const& id)
+{
+        for (int i = 0; i < 5; ++i)
+        {
+                if (games[i] == id) { return i; }
+        }
 }

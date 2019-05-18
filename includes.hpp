@@ -6,6 +6,8 @@
 #include "CRWriter.hpp"
 #include "CRManager.hpp"
 #include "CGManager.hpp"
+#include "CCenterCalculator.hpp"
+#include "CAssistantCalculator.hpp"
 #include <iostream>
 #include <string>
 #include <stdlib.h>

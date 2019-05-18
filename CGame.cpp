@@ -22,24 +22,9 @@ std::string CGame::durationToString() const
 {
     switch (duration)
     {
-        case ZERO:
-            return "ZERO";
-            break;
-        case FIFTY:
-            return "FIFTY";
-            break;
-        case SIXTY:
-            return "SIXTY";
-            break;
-        case SEVENTY:
-            return "SEVENTY";
-            break;
-        case EIGHTY:
-            return "EIGHTY";
-            break;
-        case NINETY:
-            return "NINETY";
-            break;
+        #define DEFINE_DURATION(duration, int) case duration: return #duration;
+        #include "game_enum.hpp"
+        #undef DEFINE_DURATION
         default:
             std::cerr << "Wrong input! Returning \"ZERO\"" << std::endl;
             return "ZERO";
@@ -127,4 +112,31 @@ bool CGame::isEmpty() const
 bool CGame::isAssigned() const
 {
     return !(center == "R000" && ar1 == "R000" && ar2 == "R000");
+}
+
+void CGame::reset()
+{
+    id = "G000";
+    duration = ZERO;
+    payrate = 0.0;
+    center = "None";
+    ar1 = "None";
+    ar2 = "None";
+}
+
+unsigned int CGame::getValue() const
+{
+    int duration = durationToInt();
+    return static_cast<unsigned int>(payrate*duration);
+}
+
+int CGame::durationToInt() const
+{
+    switch (duration)
+    {
+    #define DEFINE_DURATION(duration, int) case duration: return int;
+    #include "game_enum.hpp"
+    #undef DEFINE_DURATION
+    default: return -1;
+    }
 }
