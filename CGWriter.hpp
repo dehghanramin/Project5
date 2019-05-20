@@ -7,17 +7,17 @@ class CGWriter : public CWriter<T>
 {
 public:
     CGWriter() : CWriter<T>() {}
-    CGWriter(T*, T*) : CWriter<T>(start, end) {}
+    CGWriter(T* start, T* end) : CWriter<T>(start, end) {}
     void printAssigned() const
     {
-        for (T* pIterator = start_; pIterator <= end_; ++pIterator)
+        for (T* pIterator = this->start_; pIterator <= this->end_; ++pIterator)
         {
             if (!pIterator->isEmpty() && pIterator->isAssigned()) { std::cout << *pIterator << std::endl; }
         }
     }
     void printUnassigned() const
     {
-        for (T* pIterator = start_; pIterator <= end_; ++pIterator)
+        for (T* pIterator = this->start_; pIterator <= this->end_; ++pIterator)
         {
             if (!pIterator->isEmpty() && !pIterator->isAssigned()) { std::cout << *pIterator << std::endl; }
         }

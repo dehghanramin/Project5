@@ -144,7 +144,7 @@ void listAllUnassignedGames()
 
 void listtRefereeInfoWithId()
 {
-        CRWriter<CReferee> printer(START_REF, END_REF, getLastName());
+        CRWriter<CReferee> printer(START_REF, END_REF, getID());
         printer.printWID();
 }
 
@@ -288,4 +288,5 @@ int findIndex(string const& id)
         {
                 if (games[i] == id) { return i; }
         }
+        return -1;
 }

@@ -23,7 +23,7 @@ CRWriter<T>::CRWriter(T* start, T* end, std::string data) : CWriter<T>(start, en
 template <typename T>
 void CRWriter<T>::printWID() const
 {
-    for (T* pIterator = start_; pIterator <= end_; ++pIterator)
+    for (T* pIterator = this->start_; pIterator <= this->end_; ++pIterator)
     {
         if (!pIterator->isEmpty() && *pIterator==data_) { std::cout << *pIterator << std::endl; }
     }
@@ -32,7 +32,7 @@ void CRWriter<T>::printWID() const
 template <typename T>
 void CRWriter<T>::printWLN() const
 {
-    for (T* pIterator = start_; pIterator <= end_; ++pIterator)
+    for (T* pIterator = this->start_; pIterator <= this->end_; ++pIterator)
     {
         if (!pIterator->isEmpty() && *pIterator==data_) { std::cout << *pIterator << std::endl; }
     }

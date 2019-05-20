@@ -1,6 +1,7 @@
 #include "CRManager.hpp"
 #include <time.h>
 #include <iostream>
+#undef RAND_MAX
 #define RAND_MAX 14
 
 CRManager::CRManager() : CManager<CReferee>(NULL, NULL) {}
