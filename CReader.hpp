@@ -28,7 +28,7 @@ private:
         T* pIterator = start_;
         while((pIterator <= end_) && (!ins.eof()))
         {
-            ++pIterator;
+            ins >> *pIterator++;
         }
     }
 };
