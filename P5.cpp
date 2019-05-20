@@ -1,5 +1,5 @@
 #include "includes.hpp"
-#define END_GAME &games[5]
+#define END_GAME &games[4]
 #define END_REF &referees[14]
 #define START_GAME games
 #define START_REF referees
@@ -222,10 +222,12 @@ void Quit()
 
 void readInfo()
 {
-        CReader reader(referees, &referees[14]);
+        CReader<CReferee> ref_reader(START_REF, END_REF);
+        CReader<CGame> game_reader(START_GAME, END_GAME);
         try
         {
-                reader.read();
+                ref_reader.read("Referees_input.dat");
+                game_reader.read("Games.dat");
         }
         catch(string const& e)
         {
