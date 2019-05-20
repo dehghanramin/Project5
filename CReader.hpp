@@ -3,7 +3,6 @@
 #include <cstddef>
 #include <fstream>
 #include <iostream>
-#include <string>
 
 template <typename T>
 class CReader
@@ -11,10 +10,10 @@ class CReader
 public:
     CReader() : start_(NULL), end_(NULL) {}
     CReader(T* start, T* end) : start_(start), end_(end) {}
-    void read(std::string const& addr)
+    void read(char* addr)
     {
         std::ifstream inStream;
-        inStream.open(addr.c_str());
+        inStream.open(addr);
         if (inStream.fail()) {throw "File fail!";}
         readFile(inStream);
         inStream.close();
