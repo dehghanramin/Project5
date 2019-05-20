@@ -40,6 +40,7 @@ int main(void)
         do
         {
                 choice = menu();
+                system("clear");
                 switch (choice)
                 {
                 case 1:
@@ -84,7 +85,6 @@ int main(void)
                 default:
                         cout << "That was an invalid choice, please try again! \n";
                 }
-                // system("clear");
         } while ((choice > 0) && (choice < 13));
         cout << "Bye Bye!" << endl;
         return 0;
