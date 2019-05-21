@@ -111,7 +111,7 @@ bool CGame::isEmpty() const
 
 bool CGame::isAssigned() const
 {
-    return !(center == "None " && ar1 == "None" && ar2 == "None");
+    return !(center == "None" && ar1 == "None" && ar2 == "None");
 }
 
 void CGame::reset()
