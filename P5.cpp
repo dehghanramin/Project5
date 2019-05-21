@@ -241,8 +241,8 @@ void   writeInfo()
         CFWriter<CReferee> referee_writer(referees, &referees[14]);
         try
         {        
-                game_writer.print();
-                referee_writer.print();
+                game_writer.print("Games_output.dat");
+                referee_writer.print("Referees_output.dat");
         }
         catch(string const& e)
         {
