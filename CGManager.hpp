@@ -8,7 +8,7 @@ class CGManager : public CManager<CGame>
 public:
     CGManager();
     CGManager(CGame*, CGame*);
-    bool in(std::string const&) const;
+    bool in(std::string const&) const;  
     void addGame();
     void removeGame(std::string const&);
 };

@@ -9,7 +9,7 @@ class CFWriter : public CWriter<T>
 public:
     CFWriter();
     CFWriter(T*, T*);
-    virtual void print() const;
+    virtual void print(char*) const;
 };
 
 template <typename T>
@@ -19,10 +19,10 @@ template <typename T>
 CFWriter<T>::CFWriter(T* start, T* end) : CWriter<T>(start, end) {}
 
 template <typename T>
-void CFWriter<T>::print() const
+void CFWriter<T>::print(char * addr) const
 {
     std::ofstream outStream;
-    outStream.open("Referees_output.dat");
+    outStream.open(addr);
     if (outStream.fail()) { throw "Fail in open!"; }
     for (T* pIterator = CWriter<T>::getStart(); pIterator <= CWriter<T>::getEnd(); ++pIterator)
     {
